@@ -1,6 +1,15 @@
-<nav>
-     <ul>
-          <li ><a  class='{{#if state.home}}active{{/if}}' href='/'>Home</a></li>     
-          <li><a class='{{#if state.contact}}active{{/if}}' href='contact'>Contact</a></li>
-     </ul>
-</nav>
+<header>
+    <div class="container">
+        <h2>Forge Fitness</h2>
+
+        <nav>
+            <ul>
+                <li><a class="{{#if state.home}}active{{/if}}" href="/">Home</a></li>
+                <li><a class="{{#if state.hypertrophy}}active{{/if}}" href="/hypertrophy">Muscle Growth</a></li>
+                <li><a class="{{#if state.recovery}}active{{/if}}" href="/recovery">Recovery</a></li>
+                <li><a class="{{#if state.contact}}active{{/if}}" href="/contact">Contact</a></li>
+                <li><a class="{{#if state.validation}}active{{/if}}" href="/validation">Sources</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

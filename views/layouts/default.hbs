@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        {{> _head}}
-    </head>
-    <body>
-        {{> _nav}}
-        {{{body}}}
-        {{> _footer}}
-    </body>
+<html lang="en">
+<head>
+    {{> _head}}
+</head>
+<body>
+    {{> _nav}}
+
+    <main>
+        <div class="container">
+            {{{body}}}
+        </div>
+    </main>
+
+    {{> _footer}}
+
+    <script src="/js/site.js"></script>
+</body>
 </html>

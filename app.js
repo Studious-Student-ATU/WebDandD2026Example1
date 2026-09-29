@@ -1,59 +1,66 @@
-// load express
+// Load Express
 const express = require('express');
-// load handlebars
+// Load Handlebars
 const exphbs = require('express-handlebars');
 
-// instantiate express
+// Create the Express application
 const app = express();
 
-// configure express to use handlebars as templating engine
-app.engine(
-  'hbs',
-  exphbs.engine({
+// Tell Express to use Handlebars for .hbs files
+app.engine('hbs', exphbs.engine({
     extname: '.hbs',
-    // use this layout by default - if you have different layout
-    // for say home page - you can toggle this in your code
     defaultLayout: 'default',
-    // set location of layouts
     layoutsDir: 'views/layouts',
-    // set location of partials - header, footer, etc
-    partialsDir: 'views/partials',
-  })
-);
-// set the view engine to handlesbards
+    partialsDir: 'views/partials'
+}));
+
 app.set('view engine', 'hbs');
-// where to find all of the view
-app.set('views',  'views');
+app.set('views', 'views');
 
+// Make files in the public folder available to the website
+app.use(express.static('public'));
 
-// where to find static files - css, images, js
-// this needs to be uncommented so that the css file can be found and used in the layout.hbs file
-//app.use(express.static('public'));
-
-// home page or home route
+// Home page
 app.get('/', (req, res) => {
-
-  // set active for navigation
-  state={home:true}
-  // set specifics for <head>
-  head={title: "Home - Week 1"}
-  // pass object to to render in "index"
-  res.render('index', {state, head});
-  // send this to terminal where node app is running
-  console.log('home')
-
+    res.render('index', {
+        state: { home: true },
+        head: { title: 'Forge Fitness - Home' }
+    });
 });
 
-// contact route
-app.get('/contact', (req, res) => {
-    state={contact : true}
-    head={title:"Contact - Week 1"}
-    res.render('contact', { state, head});
-    console.log('contact')
-  });
+// Muscle growth page
+app.get('/hypertrophy', (req, res) => {
+    res.render('hypertrophy', {
+        state: { hypertrophy: true },
+        head: { title: 'Forge Fitness - Muscle Growth' }
+    });
+});
 
+// Recovery page
+app.get('/recovery', (req, res) => {
+    res.render('recovery', {
+        state: { recovery: true },
+        head: { title: 'Forge Fitness - Recovery' }
+    });
+});
+
+// Contact page
+app.get('/contact', (req, res) => {
+    res.render('contact', {
+        state: { contact: true },
+        head: { title: 'Forge Fitness - Contact' }
+    });
+});
+
+// Sources page
+app.get('/validation', (req, res) => {
+    res.render('validation', {
+        state: { validation: true },
+        head: { title: 'Forge Fitness - Sources' }
+    });
+});
 
 // Start the server
 app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+    console.log('Forge Fitness is running on http://localhost:3000');
 });
